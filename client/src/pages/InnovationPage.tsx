@@ -154,10 +154,10 @@ export default function InnovationPage() {
         <section className="gc-page-section">
           <div className="gc-page-container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} className="gc-cta-card">
-              <span className="gc-pill">Research</span>
-              <h2 className="gc-heading">Access Our Research Papers</h2>
-              <p className="gc-subtext" style={{ marginBottom: '32px' }}>Download our peer-reviewed technical briefs on predictive health surveillance methodology.</p>
-              <a href="#" className="gc-btn-primary">Download Technical Brief <ArrowRight size={18} /></a>
+              <span className="gc-pill">See It In Action</span>
+              <h2 className="gc-heading">Ready to Explore the Platform?</h2>
+              <p className="gc-subtext" style={{ marginBottom: '32px' }}>Walk through the full GreenChild demo — from a mother submitting a report to a health worker receiving an alert.</p>
+              <a href="/demo/mother" className="gc-btn-primary">Try the Demo <ArrowRight size={18} /></a>
             </motion.div>
           </div>
         </section>

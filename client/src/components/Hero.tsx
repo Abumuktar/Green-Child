@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
@@ -29,10 +29,9 @@ export default function Hero() {
             <Link to="/how-it-works" className="gc-btn-primary">
               See How It Works <ArrowRight size={18} />
             </Link>
-            <button className="gc-btn-secondary">
-              <div className="gc-play-icon"><Play size={12} fill="currentColor" /></div>
-              Watch Vision
-            </button>
+            <Link to="/demo/mother" className="gc-btn-secondary">
+              Try the Demo <ArrowRight size={18} />
+            </Link>
           </div>
         </motion.div>
       </div>

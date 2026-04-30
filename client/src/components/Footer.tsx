@@ -15,20 +15,20 @@ export default function Footer() {
           </div>
 
           <div className="gc-footer-col">
-            <h4>Technology</h4>
+            <h4>Platform</h4>
             <ul>
-              <li><Link to="/how-it-works">Surveillance Loop</Link></li>
-              <li><Link to="/innovation">Intelligence Brief</Link></li>
-              <li><Link to="/roadmap">Operational Journey</Link></li>
+              <li><Link to="/how-it-works">How It Works</Link></li>
+              <li><Link to="/innovation">Our AI Engine</Link></li>
+              <li><Link to="/roadmap">Roadmap</Link></li>
             </ul>
           </div>
 
           <div className="gc-footer-col">
-            <h4>Organization</h4>
+            <h4>Demo</h4>
             <ul>
-              <li><Link to="/impact">Our Impact</Link></li>
-              <li><Link to="/roadmap">2030 Roadmap</Link></li>
-              <li><a href="#">Technical Brief</a></li>
+              <li><Link to="/demo/mother">Mother Report</Link></li>
+              <li><Link to="/demo/dashboard">Risk Dashboard</Link></li>
+              <li><Link to="/demo/alerts">Health Worker Alerts</Link></li>
             </ul>
           </div>
 

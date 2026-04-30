@@ -1,21 +1,22 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Activity, BarChart3, ShieldCheck } from 'lucide-react';
+import { Activity, BarChart3, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const wards = [
-  { name: 'Katsina Ward A', region: 'Katsina Region', risk: 'Critical', score: 94, status: 'Alert Sent' },
-  { name: 'Kano Central', region: 'Kano Region', risk: 'Moderate', score: 62, status: 'Monitoring' },
-  { name: 'Jigawa South', region: 'Jigawa Region', risk: 'Low', score: 28, status: 'Safe' },
+  { name: 'Tudun Wada',  region: 'Katsina · Katsina State', score: 87, status: 'Alert Sent', color: '#ef4444' },
+  { name: 'Dala',        region: 'Kano · Kano State',       score: 79, status: 'Monitoring', color: '#f97316' },
+  { name: 'Dutsin-Ma',   region: 'Katsina · Katsina State', score: 21, status: 'All Clear',  color: '#22c55e' },
 ];
 
 export default function DashboardPreview() {
   return (
     <section id="dashboard" className="gc-dashboard">
       <div className="gc-section-header">
-        <span className="gc-pill">Intelligence Platform</span>
-        <h2 className="gc-heading">Operational Intelligence</h2>
+        <span className="gc-pill">Live Dashboard</span>
+        <h2 className="gc-heading">See Risk Before It Becomes an Outbreak</h2>
         <p className="gc-subtext">
-          Processing community signals every 24 hours to generate precision health scoring at the ward level.
+          Every community gets a live risk score, updated daily using mother reports and NASA climate data.
         </p>
       </div>
 
@@ -30,8 +31,8 @@ export default function DashboardPreview() {
           >
             <div className="gc-icon-box" style={{width:'42px', height:'42px', borderRadius:'10px'}}><ShieldCheck size={20} /></div>
             <div>
-              <h3>System Integrity</h3>
-              <p>Secure ward-level surveillance across 34 LGAs with end-to-end data validation.</p>
+              <h3>14-Day Early Warning</h3>
+              <p>Health workers get alerts up to two weeks before an outbreak hits clinics.</p>
             </div>
           </motion.div>
 
@@ -44,8 +45,8 @@ export default function DashboardPreview() {
           >
             <div className="gc-icon-box" style={{width:'42px', height:'42px', borderRadius:'10px'}}><Activity size={20} /></div>
             <div>
-              <h3>Smart Response</h3>
-              <p>Automated alert routing to local field workers before outbreaks hit clinics.</p>
+              <h3>Automatic Alerts</h3>
+              <p>When risk crosses a threshold, the nearest health worker is notified immediately.</p>
             </div>
           </motion.div>
         </div>
@@ -59,8 +60,8 @@ export default function DashboardPreview() {
         >
           <div className="gc-monitor-header">
             <div>
-              <span className="gc-monitor-tag">Live Monitor</span>
-              <h4 className="gc-monitor-title">Ward Risk Status</h4>
+              <span className="gc-monitor-tag">Live</span>
+              <h4 className="gc-monitor-title">Community Risk Today</h4>
             </div>
             <div className="gc-live-dot">
               <span className="gc-badge-dot" style={{width:'6px', height:'6px'}}></span>
@@ -76,8 +77,8 @@ export default function DashboardPreview() {
                   <div className="gc-ward-region">{ward.region}</div>
                 </div>
                 <div className="gc-ward-data">
-                  <span className="gc-ward-score">{ward.score}%</span>
-                  <span className={`gc-ward-pill ${ward.risk.toLowerCase()}`}>
+                  <span className="gc-ward-score" style={{ color: ward.color }}>{ward.score}</span>
+                  <span className="gc-ward-pill" style={{ background: ward.color + '18', color: ward.color }}>
                     {ward.status}
                   </span>
                 </div>
@@ -86,11 +87,17 @@ export default function DashboardPreview() {
           </div>
 
           <div className="gc-monitor-footer">
-            <button className="gc-monitor-btn">
-              Access Field Data <BarChart3 size={16} />
-            </button>
+            <Link to="/demo/dashboard" className="gc-monitor-btn">
+              Open Full Dashboard <BarChart3 size={16} />
+            </Link>
           </div>
         </motion.div>
+      </div>
+
+      <div style={{ textAlign: 'center', marginTop: '40px' }}>
+        <Link to="/demo/mother" className="gc-btn-primary">
+          Try the Demo <ArrowRight size={18} />
+        </Link>
       </div>
     </section>
   );

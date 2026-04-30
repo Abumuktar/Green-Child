@@ -14,6 +14,9 @@ import HowItWorksPage from './pages/HowItWorksPage';
 import InnovationPage from './pages/InnovationPage';
 import ImpactPage from './pages/ImpactPage';
 import RoadmapPage from './pages/RoadmapPage';
+import MotherReportPage from './pages/MotherReportPage';
+import DashboardPage from './pages/DashboardPage';
+import AlertsPage from './pages/AlertsPage';
 
 function HomePage() {
   return (
@@ -45,6 +48,9 @@ function App() {
           <Route path="/innovation" element={<InnovationPage />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route path="/demo/mother" element={<MotherReportPage />} />
+          <Route path="/demo/dashboard" element={<DashboardPage />} />
+          <Route path="/demo/alerts" element={<AlertsPage />} />
         </Routes>
       </main>
     </BrowserRouter>

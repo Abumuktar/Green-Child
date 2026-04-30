@@ -30,13 +30,13 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="gc-nav-links">
           <Link to="/" className="gc-nav-link">Home</Link>
-          <Link to="/how-it-works" className="gc-nav-link">Process</Link>
-          <Link to="/innovation" className="gc-nav-link">Intelligence</Link>
+          <Link to="/how-it-works" className="gc-nav-link">How It Works</Link>
+          <Link to="/innovation" className="gc-nav-link">Our AI</Link>
           <Link to="/impact" className="gc-nav-link">Impact</Link>
           <Link to="/roadmap" className="gc-nav-link">Roadmap</Link>
-          <a href="#contact" className="gc-btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
-            Get Started <ArrowRight size={14} />
-          </a>
+          <Link to="/demo/mother" className="gc-btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
+            Try Demo <ArrowRight size={14} />
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -49,13 +49,13 @@ export default function Navbar() {
       {isOpen && (
         <div className="gc-mobile-menu">
           <Link to="/" className="gc-mobile-link">Home</Link>
-          <Link to="/how-it-works" className="gc-mobile-link">Process</Link>
-          <Link to="/innovation" className="gc-mobile-link">Intelligence</Link>
+          <Link to="/how-it-works" className="gc-mobile-link">How It Works</Link>
+          <Link to="/innovation" className="gc-mobile-link">Our AI</Link>
           <Link to="/impact" className="gc-mobile-link">Impact</Link>
           <Link to="/roadmap" className="gc-mobile-link">Roadmap</Link>
-          <a href="#contact" className="gc-mobile-cta">
-            Get Started <ArrowRight size={18} />
-          </a>
+          <Link to="/demo/mother" className="gc-mobile-cta">
+            Try Demo <ArrowRight size={18} />
+          </Link>
         </div>
       )}
     </nav>
