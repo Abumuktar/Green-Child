@@ -1062,7 +1062,7 @@ article {
 
 /* Map wrapper — full width, fixed height */
 .gc-dash-map-wrap {
-  position:relative; height:520px; overflow:hidden;
+  position:relative; height:380px; overflow:hidden;
 }
 .gc-dash-map-wrap .leaflet-container {
   position:absolute !important; top:0; left:0;
@@ -1229,7 +1229,7 @@ article {
 
 /* ─── Responsive ─── */
 @media (max-width: 880px) {
-  .gc-dash-map-wrap { height: 400px; }
+  .gc-dash-map-wrap { height: 320px; }
   .gc-ward-bar-stats { gap: 18px; }
 }
 @media (max-width: 720px) {
@@ -1255,7 +1255,7 @@ article {
   .gc-dash-kpi-icon   { width: 40px; height: 40px; border-radius: 11px; }
   .gc-dash-kpi-num    { font-size: 1.3rem; }
   .gc-dash-kpi-label  { font-size: 0.65rem; }
-  .gc-dash-map-wrap   { height: 320px; }
+  .gc-dash-map-wrap   { height: 260px; }
   .gc-ward-bar        { flex-direction: column; align-items: flex-start; }
   .gc-ward-bar-stats  { width: 100%; }
   .gc-ward-bar-btn    { width: 100%; justify-content: center; }
