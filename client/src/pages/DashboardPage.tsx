@@ -199,39 +199,39 @@ export default function DashboardPage() {
 
         {/* ── KPI cards ── */}
         <div className="gc-dash-kpis">
-          <div className="gc-dash-kpi" style={{ borderLeftColor:'#ef4444' }}>
+          <div className="gc-dash-kpi">
             <div className="gc-dash-kpi-icon" style={{ background:'#fef2f2' }}>
-              <AlertTriangle size={17} color="#ef4444" />
+              <AlertTriangle size={20} color="#ef4444" />
             </div>
             <div className="gc-dash-kpi-text">
               <div className="gc-dash-kpi-num" style={{ color:'#ef4444' }}>{dangerCount}</div>
               <div className="gc-dash-kpi-label">Danger areas — act now</div>
             </div>
           </div>
-          <div className="gc-dash-kpi" style={{ borderLeftColor:'#f97316' }}>
+          <div className="gc-dash-kpi">
             <div className="gc-dash-kpi-icon" style={{ background:'#fff7ed' }}>
-              <Activity size={17} color="#f97316" />
+              <Activity size={20} color="#f97316" />
             </div>
             <div className="gc-dash-kpi-text">
               <div className="gc-dash-kpi-num" style={{ color:'#f97316' }}>{watchCount}</div>
               <div className="gc-dash-kpi-label">High risk — watch closely</div>
             </div>
           </div>
-          <div className="gc-dash-kpi" style={{ borderLeftColor:'#006838' }}>
+          <div className="gc-dash-kpi">
             <div className="gc-dash-kpi-icon" style={{ background:'#f0fdf4' }}>
-              <Users size={17} color="#006838" />
+              <Users size={20} color="#006838" />
             </div>
             <div className="gc-dash-kpi-text">
               <div className="gc-dash-kpi-num" style={{ color:'#006838' }}>{totalChildren.toLocaleString()}</div>
               <div className="gc-dash-kpi-label">Children who need protection</div>
             </div>
           </div>
-          <div className="gc-dash-kpi" style={{ borderLeftColor:'#6b7280' }}>
-            <div className="gc-dash-kpi-icon" style={{ background:'#f9fafb' }}>
-              <TrendingUp size={17} color="#6b7280" />
+          <div className="gc-dash-kpi">
+            <div className="gc-dash-kpi-icon" style={{ background:'#f0fdf4' }}>
+              <TrendingUp size={20} color="#006838" />
             </div>
             <div className="gc-dash-kpi-text">
-              <div className="gc-dash-kpi-num">{wards.length}</div>
+              <div className="gc-dash-kpi-num" style={{ color:'#014431' }}>{wards.length}</div>
               <div className="gc-dash-kpi-label">Communities being watched</div>
             </div>
           </div>
