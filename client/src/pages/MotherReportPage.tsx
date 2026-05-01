@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Phone, CheckCircle2, ArrowRight, Signal, Wifi, Battery, RefreshCw, ChevronDown } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -60,13 +60,13 @@ const now = () => {
 type ChatMsg = { id: number; from: 'bot' | 'user'; text: string; time: string };
 
 function WhatsAppChat() {
-  const [msgs, setMsgs]       = useState<ChatMsg[]>([]);
-  const [typing, setTyping]   = useState(false);
+  const [msgs, setMsgs]         = useState<ChatMsg[]>([]);
+  const [typing, setTyping]     = useState(false);
   const [showOpts, setShowOpts] = useState(false);
-  const [done, setDone]       = useState(false);
-  const [started, setStarted] = useState(false);
-  const idRef                 = useRef(0);
-  const chatRef               = useRef<HTMLDivElement>(null);
+  const [done, setDone]         = useState(false);
+  const [started, setStarted]   = useState(false);
+  const idRef                   = useRef(0);
+  const chatRef                 = useRef<HTMLDivElement>(null);
 
   const scroll = () =>
     setTimeout(() => chatRef.current?.scrollTo({ top: 9999, behavior: 'smooth' }), 60);
@@ -84,14 +84,6 @@ function WhatsAppChat() {
       }, delay);
     });
 
-  const start = async () => {
-    if (started) return;
-    setStarted(true);
-    await botSay('Ina kwana, Fatima 👋\nGood morning, Fatima', 300, 600);
-    await botSay('Yaya lafiyar ɗanka yau?\nHow is your child today?', 200, 750);
-    setTimeout(() => setShowOpts(true), 300);
-  };
-
   const pick = async (s: Symptom) => {
     setShowOpts(false);
     push({ from: 'user', text: `${s.emoji} ${s.hausa} · ${s.label}` });
@@ -104,6 +96,18 @@ function WhatsAppChat() {
     setMsgs([]); setTyping(false);
     setShowOpts(false); setDone(false); setStarted(false);
   };
+
+  // Re-run bot intro after reset
+  useEffect(() => {
+    if (!started) {
+      setStarted(true);
+      (async () => {
+        await botSay('Ina kwana, Fatima 👋\nGood morning, Fatima', 800, 600);
+        await botSay('Yaya lafiyar ɗanka yau?\nHow is your child today?', 300, 750);
+        setTimeout(() => setShowOpts(true), 300);
+      })();
+    }
+  }, [started]);
 
   return (
     <div className="gc-phone-frame">
@@ -121,13 +125,6 @@ function WhatsAppChat() {
         </div>
 
         <div className="gc-wa-chat" ref={chatRef}>
-          {!started && (
-            <motion.div className="gc-wa-idle" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <div style={{ fontSize: '2rem', marginBottom: 10 }}>💬</div>
-              <p>Daily symptom check-in</p>
-              <button className="gc-wa-start-btn" onClick={start}>Begin Check-in</button>
-            </motion.div>
-          )}
 
           <AnimatePresence>
             {msgs.map(m => (
