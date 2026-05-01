@@ -81,36 +81,41 @@ function AlertCard({ alert, onClick }: { alert: Alert; onClick: () => void }) {
   return (
     <motion.div
       className="gc-alert-card"
-      style={{ borderLeftColor: color }}
       onClick={onClick}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.18 }}
-      whileHover={{ backgroundColor: '#f9fafb' }}
     >
-      <div className="gc-alert-card-main">
-        <div className="gc-alert-card-left">
-          <div className="gc-alert-community">{alert.community}</div>
-          <div className="gc-alert-loc"><MapPin size={11} /> {alert.lga} · {alert.state} State</div>
-        </div>
-        <div className="gc-alert-card-right">
-          <span className="gc-alert-risk-pill" style={{ background: color + '15', color }}>
-            {riskLabel(alert.risk)}
-          </span>
-          <span className="gc-alert-status-chip" style={{ background: scfg.bg, color: scfg.color }}>
-            <span className="gc-alert-status-dot" style={{ background: scfg.dot }} />
-            {scfg.label}
-          </span>
+      {/* Risk score badge */}
+      <div className="gc-alert-card-dot" style={{ background: color + '14', color }}>
+        <span>{alert.risk}</span>
+        <span className="gc-alert-card-dot-sub">/100</span>
+      </div>
+
+      {/* Community info */}
+      <div className="gc-alert-card-body">
+        <div className="gc-alert-community">{alert.community}</div>
+        <div className="gc-alert-loc"><MapPin size={11} /> {alert.lga} · {alert.state} State</div>
+        <div className="gc-alert-card-stats">
+          <span className="gc-alert-card-stat"><Users size={11} /> {alert.childrenAtRisk} children at risk</span>
+          {alert.daysToOutbreak !== null && (
+            <span className="gc-alert-card-stat" style={{ color, fontWeight: 600 }}>
+              <AlertTriangle size={11} /> Outbreak in {alert.daysToOutbreak} days
+            </span>
+          )}
+          <span className="gc-alert-card-stat gc-alert-card-time"><Clock size={11} /> {alert.receivedAt}</span>
         </div>
       </div>
-      <div className="gc-alert-card-stats">
-        <span className="gc-alert-card-stat"><Users size={11} /> {alert.childrenAtRisk} children at risk</span>
-        {alert.daysToOutbreak !== null && (
-          <span className="gc-alert-card-stat" style={{ color, fontWeight: 600 }}>
-            <AlertTriangle size={11} /> Outbreak in {alert.daysToOutbreak} days
-          </span>
-        )}
-        <span className="gc-alert-card-stat gc-alert-card-time"><Clock size={11} /> {alert.receivedAt}</span>
+
+      {/* Status + risk chips */}
+      <div className="gc-alert-card-chips">
+        <span className="gc-alert-risk-pill" style={{ background: color + '14', color }}>
+          {riskLabel(alert.risk)}
+        </span>
+        <span className="gc-alert-status-chip" style={{ background: scfg.bg, color: scfg.color }}>
+          <span className="gc-alert-status-dot" style={{ background: scfg.dot }} />
+          {scfg.label}
+        </span>
       </div>
     </motion.div>
   );
@@ -143,8 +148,11 @@ function AlertModal({ alert, onClose, onStatusChange, onActionToggle }: {
         transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
         onClick={e => e.stopPropagation()}
       >
+        {/* Colour accent bar */}
+        <div style={{ height: 4, background: color, flexShrink: 0 }} />
+
         {/* Header */}
-        <div className="gc-modal-header" style={{ borderLeftColor: color }}>
+        <div className="gc-modal-header">
           <div>
             <div className="gc-modal-title">{alert.community}</div>
             <div className="gc-modal-sub"><MapPin size={11} /> {alert.lga} · {alert.state} State</div>
@@ -268,8 +276,9 @@ export default function AlertsPage() {
       <header className="gc-alerts-topbar">
         <div className="gc-alerts-topbar-left">
           <Link to="/demo/dashboard" className="gc-dash-back">
-            <ArrowLeft size={14} /> Dashboard
+            <ArrowLeft size={13} /> Dashboard
           </Link>
+          <div className="gc-dash-divider-v" />
           <div className="gc-dash-brand">
             <img src="/logo.png" alt="GreenChild" className="gc-dash-logo" />
             <div>
@@ -293,21 +302,21 @@ export default function AlertsPage() {
 
         {/* Summary stat cards */}
         <div className="gc-alerts-summary">
-          <div className="gc-alerts-sum-card" style={{ borderLeftColor:'#ef4444' }}>
-            <div className="gc-alerts-sum-icon" style={{ background:'#fef2f2' }}><AlertTriangle size={18} color="#ef4444" /></div>
+          <div className="gc-alerts-sum-card">
+            <div className="gc-alerts-sum-icon" style={{ background:'#fef2f2' }}><AlertTriangle size={20} color="#ef4444" /></div>
             <div><div className="gc-alerts-sum-num" style={{ color:'#ef4444' }}>{urgentCount}</div><div className="gc-alerts-sum-label">Need urgent action</div></div>
           </div>
-          <div className="gc-alerts-sum-card" style={{ borderLeftColor:'#f97316' }}>
-            <div className="gc-alerts-sum-icon" style={{ background:'#fff7ed' }}><Bell size={18} color="#f97316" /></div>
+          <div className="gc-alerts-sum-card">
+            <div className="gc-alerts-sum-icon" style={{ background:'#fff7ed' }}><Bell size={20} color="#f97316" /></div>
             <div><div className="gc-alerts-sum-num" style={{ color:'#f97316' }}>{newCount}</div><div className="gc-alerts-sum-label">Waiting for response</div></div>
           </div>
-          <div className="gc-alerts-sum-card" style={{ borderLeftColor:'#22c55e' }}>
-            <div className="gc-alerts-sum-icon" style={{ background:'#f0fdf4' }}><CheckCircle2 size={18} color="#22c55e" /></div>
+          <div className="gc-alerts-sum-card">
+            <div className="gc-alerts-sum-icon" style={{ background:'#f0fdf4' }}><CheckCircle2 size={20} color="#22c55e" /></div>
             <div><div className="gc-alerts-sum-num" style={{ color:'#22c55e' }}>{respondedCount}</div><div className="gc-alerts-sum-label">Resolved today</div></div>
           </div>
-          <div className="gc-alerts-sum-card" style={{ borderLeftColor:'#6b7280' }}>
-            <div className="gc-alerts-sum-icon" style={{ background:'#f9fafb' }}><Users size={18} color="#6b7280" /></div>
-            <div><div className="gc-alerts-sum-num">{alerts.length}</div><div className="gc-alerts-sum-label">Total alerts today</div></div>
+          <div className="gc-alerts-sum-card">
+            <div className="gc-alerts-sum-icon" style={{ background:'#f0fdf4' }}><Users size={20} color="#006838" /></div>
+            <div><div className="gc-alerts-sum-num" style={{ color:'#014431' }}>{alerts.length}</div><div className="gc-alerts-sum-label">Total alerts today</div></div>
           </div>
         </div>
 
