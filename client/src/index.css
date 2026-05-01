@@ -992,40 +992,44 @@ article {
 /* ─── Topbar ─── */
 .gc-dash-topbar {
   display:flex; align-items:center; justify-content:space-between;
-  padding:0 24px; height:60px;
-  background:var(--primary-dark); color:#fff;
+  padding:0 28px; height:64px;
+  background:#fff;
   position:sticky; top:0; z-index:1000;
-  box-shadow:0 2px 8px rgba(0,0,0,0.18);
+  border-bottom:1px solid #f0f2f5;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  gap:16px;
 }
-.gc-dash-topbar-left  { display:flex; align-items:center; gap:14px; min-width:0; }
-.gc-dash-topbar-right { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.gc-dash-topbar-left  { display:flex; align-items:center; gap:16px; min-width:0; }
+.gc-dash-topbar-right { display:flex; align-items:center; gap:14px; flex-shrink:0; }
 
 .gc-dash-back {
   display:flex; align-items:center; gap:5px;
-  color:rgba(255,255,255,0.5); font-size:0.77rem; font-weight:500;
-  padding:5px 10px; border-radius:8px; background:rgba(255,255,255,0.07);
-  transition:all 0.15s; white-space:nowrap; flex-shrink:0;
+  color:var(--text-muted); font-size:0.77rem; font-weight:500;
+  padding:6px 12px; border-radius:8px; background:#f8fafc; border:1px solid #f0f2f5;
+  transition:all 0.15s; white-space:nowrap; flex-shrink:0; text-decoration:none;
 }
-.gc-dash-back:hover { color:#fff; background:rgba(255,255,255,0.12); }
+.gc-dash-back:hover { color:var(--primary); background:#f0fdf4; border-color:#d1fae5; }
+
+.gc-dash-divider-v { width:1px; height:28px; background:#f0f2f5; flex-shrink:0; }
 
 .gc-dash-brand  { display:flex; align-items:center; gap:10px; min-width:0; }
-.gc-dash-logo   { width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1); flex-shrink:0; }
-.gc-dash-title  { font-size:0.88rem; font-weight:700; color:#fff; line-height:1.2; white-space:nowrap; }
-.gc-dash-subtitle { font-size:0.62rem; color:rgba(255,255,255,0.42); white-space:nowrap; }
+.gc-dash-logo   { width:28px; height:28px; object-fit:contain; flex-shrink:0; }
+.gc-dash-title  { font-size:0.92rem; font-weight:700; color:var(--primary-dark); line-height:1.2; white-space:nowrap; }
+.gc-dash-subtitle { font-size:0.64rem; color:var(--text-muted); white-space:nowrap; margin-top:2px; }
 
 .gc-dash-live-badge {
-  display:flex; align-items:center; gap:5px;
-  background:rgba(239,68,68,0.14); border:1px solid rgba(239,68,68,0.28);
-  border-radius:100px; padding:3px 10px;
-  font-size:0.62rem; font-weight:800; color:#fca5a5; letter-spacing:0.1em; flex-shrink:0;
+  display:flex; align-items:center; gap:6px;
+  background:#fef2f2; border:1px solid #fecaca;
+  border-radius:100px; padding:5px 12px;
+  font-size:0.64rem; font-weight:800; color:#dc2626; letter-spacing:0.08em; flex-shrink:0;
 }
 .gc-dash-live-dot { width:6px; height:6px; background:#ef4444; border-radius:50%; animation:gc-pulse 1.4s infinite; }
 
-.gc-dash-reports       { display:flex; flex-direction:column; align-items:flex-end; }
-.gc-dash-reports-num   { font-size:0.95rem; font-weight:700; color:#fff; line-height:1.1; }
-.gc-dash-reports-label { font-size:0.58rem; color:rgba(255,255,255,0.38); }
+.gc-dash-reports { display:flex; flex-direction:column; align-items:flex-end; gap:1px; }
+.gc-dash-reports-num   { font-size:1rem; font-weight:800; color:var(--primary-dark); line-height:1; letter-spacing:-0.02em; }
+.gc-dash-reports-label { font-size:0.6rem; color:var(--text-muted); font-weight:500; }
 
-.gc-dash-alerts-btn { padding:8px 16px !important; font-size:0.78rem !important; gap:6px !important; flex-shrink:0; }
+.gc-dash-alerts-btn { padding:9px 18px !important; font-size:0.8rem !important; gap:6px !important; flex-shrink:0; }
 
 /* ─── Page body ─── */
 .gc-dash-body {
@@ -1246,10 +1250,11 @@ article {
   .gc-ward-bar-score-num { font-size: 1.2rem; }
 }
 @media (max-width: 480px) {
-  .gc-dash-topbar     { padding: 0 14px; gap: 8px; }
-  .gc-dash-subtitle   { display: none; }
-  .gc-dash-reports    { display: none; }
-  .gc-dash-alerts-btn { display: none; }
+  .gc-dash-topbar       { padding: 0 14px; gap: 8px; }
+  .gc-dash-divider-v    { display: none; }
+  .gc-dash-subtitle     { display: none; }
+  .gc-dash-reports      { display: none; }
+  .gc-dash-alerts-btn   { display: none; }
   .gc-dash-kpis  { gap: 8px; }
   .gc-dash-kpi   { padding: 14px 13px; gap: 12px; border-radius: 14px; }
   .gc-dash-kpi-icon   { width: 40px; height: 40px; border-radius: 11px; }

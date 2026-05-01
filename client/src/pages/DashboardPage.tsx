@@ -170,13 +170,14 @@ export default function DashboardPage() {
       <header className="gc-dash-topbar">
         <div className="gc-dash-topbar-left">
           <Link to="/demo/mother" className="gc-dash-back">
-            <ArrowLeft size={14} /> Back
+            <ArrowLeft size={13} /> Back
           </Link>
+          <div className="gc-dash-divider-v" />
           <div className="gc-dash-brand">
             <img src="/logo.png" alt="GreenChild" className="gc-dash-logo" />
             <div>
               <div className="gc-dash-title">Community Health Dashboard</div>
-              <div className="gc-dash-subtitle">Katsina &amp; Kano · Watching for malaria outbreaks</div>
+              <div className="gc-dash-subtitle">Katsina &amp; Kano · Live malaria risk monitoring</div>
             </div>
           </div>
         </div>
@@ -186,7 +187,7 @@ export default function DashboardPage() {
           </div>
           <div className="gc-dash-reports">
             <span className="gc-dash-reports-num">{reports.toLocaleString()}</span>
-            <span className="gc-dash-reports-label">mother reports received</span>
+            <span className="gc-dash-reports-label">mother reports today</span>
           </div>
           <Link to="/demo/alerts" className="gc-btn-primary gc-dash-alerts-btn">
             View Alerts <ArrowRight size={13} />
